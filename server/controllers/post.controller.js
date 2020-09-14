@@ -26,10 +26,11 @@ const postController = {
         console.log('\x1b[33m%s\x1b[0m', "...ADD NEW POST...");
         const writer = req.userInfo.id;
         const { postText } = req.body;
-        const newPost = new PostModel({ postText, writer }); 
+        const newPost = new PostModel({ postText, writer });
         try {
             DBManager.CONNECT();
-            const newAddedPost = await newPost.save();
+            const savedPost = await newPost.save();
+            const newAddedPost = await savedPost.populate('writer', 'username attendingStatus').execPopulate();
             return res.status(201).json({ message: { msgBody: 'Post saved succesfully', msgError: false }, newAddedPost })
         }
         catch (err) {
