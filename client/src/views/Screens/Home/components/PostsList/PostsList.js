@@ -11,7 +11,7 @@ const PostsList = ({ posts, editPost, deletePost, submitReply }) => {
 
     return (
         <div className={classes.Timeline} >
-            { posts?
+            {
                 posts.map((post, index) => {
                     const { postText, writer: { username, attendingStatus }, createdAt, replies, _id: id } = post;
                     return (
@@ -39,8 +39,7 @@ const PostsList = ({ posts, editPost, deletePost, submitReply }) => {
                             />
                         </div>
                     )
-                }) :
-                <div>no posts</div>
+                })
             }
         </div>
     )

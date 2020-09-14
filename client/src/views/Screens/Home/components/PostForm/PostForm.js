@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 import classes from './PostForm.module.css';
-import Avatar from '../../../../UI/Avatar/Avatar';
+import Avatar from '../../../../UI/Avatar/Avatar'
 
 
 const PostForm = ({ submit, loading }) => {
@@ -27,6 +27,5 @@ const PostForm = ({ submit, loading }) => {
         </div>
     )
 }
-
 
 export default PostForm;
