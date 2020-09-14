@@ -30,6 +30,48 @@ const authController = {
         }
     },
 
+
+
+    login: async (req, res, next) => {
+        console.log('\x1b[33m%s\x1b[0m', "...LOGIN REQUEST...");
+
+        const { email, password } = req.body;
+
+        try {
+            await DBManager.CONNECT();
+            const user = await UserModel.findOne({ email });
+            if (user) {
+                DBManager.DISCONNECT();
+                if (comparePassword(password, user.password)) {
+                    const { password, ...rest } = user._doc
+                    const token = jwtToken.createToken({ userId: user._id, username: user.username, role: user.role });
+
+                    res.cookie('access_token', token, { httpOnly: true, sameSite: true });
+                    return res.status(201).json({
+                        message: { msgBody: `Welcome, ${user.username}`, msgError: false },
+                        isAuthenticated: true, userInfo: rest
+                    });
+                } else {
+                    DBManager.DISCONNECT();
+                    return res.status(401).json({
+                        message: { msgBody: 'Invalid password', msgError: true },
+                        isAuthenticated: false,
+                    })
+                }
+            } else {
+                DBManager.DISCONNECT();
+                return res.status(401).json({
+                    message: { msgBody: 'Invalid email', msgError: true },
+                    isAuthenticated: false,
+                })
+            }
+        }
+        catch (err) {
+            DBManager.DISCONNECT();
+            console.error(err.message);
+            next(serverErrMsg)
+        }
+    },
 };
 
 module.exports = authController;
