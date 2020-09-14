@@ -8,7 +8,7 @@ const notAttend = <div className={classes.NotAttStatus}></div>
 const AttendingStatus = ({ status }) =>
     <div className="horizontal-layout">
         {status === "attending" ? attend : notAttend}
-        <h6>{status}</h6>
+        <h6 style={{color:"#555555"}}>{status}</h6>
     </div>
 
 export default AttendingStatus;

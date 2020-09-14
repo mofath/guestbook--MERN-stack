@@ -19,12 +19,12 @@
 .Body {
   align-self: center;
   justify-self: center;
-  color: #0e1316;
+  /* color: #0e1316; */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.Body h5, h6{
+.Body h5{
   align-self: center;
   padding: 3px 0px;
   margin: 0px 0px;

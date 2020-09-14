@@ -1,8 +1,10 @@
-import React from 'react'
 
-import { RiErrorWarningLine as ConfirmIcon } from 'react-icons/ri'
 
-import classes from './Message.module.css'
+import React from 'react';
+
+import { RiErrorWarningLine as ConfirmIcon } from 'react-icons/ri';
+
+import classes from './Message.module.css';
 
 const InfoMsg = ({ msgBody, close, callBack }) =>
     <div className={classes.Msg}>

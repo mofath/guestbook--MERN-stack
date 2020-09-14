@@ -3,15 +3,16 @@
 }
 
 .UserData h5{
-    margin-bottom: 7px;
+    margin-bottom: 2px;
     color: var(--color-primary-light);
 }
 
-.UserData h6{
+.UserData h6.Time{
     color: var(--color-secondary-dark);
     font-size: 10px;
     opacity: 0.7;
     margin-bottom: 3px;
     font-weight: 400;
+    align-self: start;
 }
 

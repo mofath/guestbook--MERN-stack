@@ -19,7 +19,7 @@
 
 .NotAttStatus h6,
 .AttStatus h6{
-    color: var(--color-secondary-dark);
+    color: var(--color-primary-lighter);
     font-size: 10px;
     opacity: 0.7;
     margin-bottom: 3px;
