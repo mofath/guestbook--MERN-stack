@@ -1,0 +1,31 @@
+.LandingScreen {
+    position: absolute;
+    top: 0;
+    right: 0    ;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary-light);
+    display: grid;
+    overflow: hidden;
+    grid-template-areas: 'form branding';
+    grid-template-columns: 50% 50%;
+}
+
+
+.BrandingWrapper{
+    grid-area: branding;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.AuthFormWrapper{
+    grid-area: form;
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

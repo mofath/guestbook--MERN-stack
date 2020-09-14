@@ -1,1 +1,44 @@
 
+
+/* ******************** Start General Rules ********************* */
+/* @import "./normalise.css"; */
+
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --color-primary-darker: #200516;
+    --color-primary: #771650;
+    --color-primary-light: #b11d75;
+    --color-primary-lighter: #e094f8;
+    --color-secondary-dark:#96968e;
+    --color-secondary-darker:#555555;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  /* ******************** End General Rules ********************* */
+  
+  /* ****************** Start Layout Rules ******************* */
+  .vertical-layout,
+  .horizontal-layout {
+    display: flex;
+    flex:1;
+  }
+  .horizontal-layout { flex-direction: row; }
+  .vertical-layout { flex-direction: column; }
+  
+  .mycontainer {
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: transparent;
+  }
+  
+  .screen { padding: 30px 5%; }
+  /* ****************** End Layout Rules ******************* */
+  

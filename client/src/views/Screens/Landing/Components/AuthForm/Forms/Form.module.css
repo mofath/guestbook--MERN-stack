@@ -1,0 +1,118 @@
+.Form{
+    min-width: 350px;
+    height: 350px!important;
+    min-height: 350px!important;
+    padding: 80px 0 0 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+.FormGroup{
+    width: 100%;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+/* ********************* Start Input Rules ***************************** */
+.Form  input.InputElement::selection,
+.Form  input.InputElement:focus,
+.Form  input.InputElement:active,
+.Form  input.InputElement:default,
+.Form  input.InputElement
+{
+    display: block;
+    width: 100%;
+    padding: 6px 6px;
+    font-size: 14px;
+    border: none;
+    color: white!important;
+    background-color: transparent!important;
+    border-bottom: 1.5px solid white;
+    outline: none;
+}
+
+.Form label {
+    color: white;
+    padding: 6px 0;
+    width: 125px;
+    max-width: 100%;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+/* ********************* Start Input Rules ***************************** */
+
+/* ********************* Start Submit Button Rules ***************************** */
+.Form input[type="submit"]{
+    width: 100%;
+    background-color: white;
+    border: solid 1px white;
+    border-radius: 10px;
+    color: var(--color-primary-darker);
+    border-radius: 35px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 550;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    justify-self: flex-end;
+}
+.Form input[type="submit"]:hover,
+.Form input[type="submit"]:focus,
+.Form input[type="submit"]:active
+{
+    opacity: 0.9;
+    outline: none;
+}
+/* ********************* End Submit Button Rules ***************************** */
+
+
+/* ************************ Radio Button Styling ***************************** */
+.RadioGroup {
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 0 15px 0;
+}
+
+.RadioGroup p,
+.RadioGroup label{
+    color: white;
+    padding: 6px 0;
+    max-width: 100%;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+}
+.RadioGroup p{
+    margin-right: 30px!important;
+}
+.RadioGroup input[type="radio"] {
+    vertical-align: middle;
+}
+.RadioGroup input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+}
+.RadioGroup input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #ffa500;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid white;
+}
