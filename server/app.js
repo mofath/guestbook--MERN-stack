@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cockieParser = require('cookie-parser');
 // routes import
 const authRoute = require('./routes/auth.route');
-const postsRouter = require('./routes/post.route');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,7 +13,7 @@ app.use(cockieParser());
 
 // handle cors 
 app.use((req, res, next) => {
-    console.log('\x1b[33m%s\x1b[0m', "...NEW CONNECTION MADE...");
+    console.log('\x1b[34m%s\x1b[38m', "...NEW CONNECTION MADE...");
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -27,7 +26,6 @@ app.use((req, res, next) => {
 
 // Routes which should handle requests
 app.use('/user/auth', authRoute);
-app.use('/posts', postsRouter);
 
 
 // override 404 error
@@ -41,7 +39,9 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
     console.log('\x1b[33m%s\x1b[0m', "...ERROR CAUGHT...");
 
-    console.error(error.message)
+    console.log('\x1b[33m%s\x1b[0m',"Error:", error.message );
+
+    // console.error(error.message)
     return res.status(error.status || 500).json({ message: { msgBody: error.message, msgError: true } });
 });
 
