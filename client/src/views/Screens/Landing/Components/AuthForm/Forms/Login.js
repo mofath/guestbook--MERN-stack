@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 
 import LoginForm from './form';
 import classes from './Form.module.css';
+import { loginAction } from "../../../../../../_store/modules/auth/actions";
 
 const initialState = {
     username: '',
@@ -12,8 +16,21 @@ const initialState = {
 const Login = (props) => {
     const { handleChange, handleSubmit, values } = LoginForm(submit, initialState);
 
-    async function submit (loginData) {
-        console.log(loginData);
+    const authReducer = useSelector(state => state.authReducer);
+    const alertReducer = useSelector(state => state.alertReducer)
+    const { isAuthenticated, isLoading } = authReducer;
+    const { id } = alertReducer
+
+    const history = useHistory();
+    useEffect(() => {
+        if (id === "LOGIN_REQUEST") {
+            if (isAuthenticated && !isLoading) history.replace('/home')
+        }
+    }, [isAuthenticated]);
+
+    const dispatch = useDispatch();
+    async function submit(loginData) {
+        await dispatch(loginAction(loginData))
     }
 
     return (

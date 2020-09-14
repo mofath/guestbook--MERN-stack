@@ -18,9 +18,26 @@ import {
 } from "./types";
 
 import { getMessage, displayMessage } from '../alert/actions';
-import authService from '../../../_services/auth.service'
+import authService from '../../../_services/auth.service';
 
 let msgBody = null;
+
+
+const loginAction = (loginData) => async (dispatch) => {
+  dispatch({ type: LOGIN_REQUEST });
+  try {
+    const { data } = await authService.login(loginData);
+    dispatch(getMessage(data.message.msgBody, false, LOGIN_REQUEST))
+    dispatch({ type: LOGIN_SUCCESS, payload: { userInfo: data.userInfo } });
+  }
+  catch (error) {
+    msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
+    dispatch(getMessage(msgBody, true, LOGIN_REQUEST))
+    dispatch({ type: LOGIN_FAIL });
+    dispatch(displayMessage("info"))
+  }
+}
+
 
 
 const signupAction = (signupData) => async (dispatch) => {
@@ -46,5 +63,6 @@ const signupAction = (signupData) => async (dispatch) => {
 
 
 export {
-  signupAction, 
+  signupAction,
+  loginAction,
 };

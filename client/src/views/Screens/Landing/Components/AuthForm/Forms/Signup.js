@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+
 import { signupAction } from "../../../../../../_store/modules/auth/actions";
-
 import SignupForm from './form';
-
 import classes from './Form.module.css';
 
 const initialState = {
@@ -13,13 +13,26 @@ const initialState = {
     attendingStatus: 'Attending',
 };
 
+
 const Signup = () => {
     const { handleChange, handleSubmit, values, errors } = SignupForm(submit, initialState);
 
+    const authReducer = useSelector(state => state.authReducer);
+    const alertReducer = useSelector(state => state.alertReducer)
+
+    const { isAuthenticated, isLoading } = authReducer;
+    const { id } = alertReducer
+
+    const history = useHistory();
+    useEffect(() => {
+        if (id === "REGISTER_REQUEST") {
+            alert(2);
+            if (isAuthenticated && !isLoading) history.replace('/home')
+        }
+    }, [isAuthenticated]);
 
     const dispatch = useDispatch();
     async function submit(signupData) {
-        console.log(signupData);
         await dispatch(signupAction(signupData))
     }
 

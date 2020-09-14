@@ -51,6 +51,7 @@ function authReducer(state = INITIAL_STATE, action) {
     case LOGOUT_FAIL:
       return {
         ...state,
+        isAuthenticated: true,
         isLoading: false,
       };
 
