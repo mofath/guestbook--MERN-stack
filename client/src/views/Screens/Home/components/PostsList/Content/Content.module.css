@@ -1,0 +1,50 @@
+.ContentDisplay,
+.EditPostForm textarea{
+    background-color: transparent;
+    padding: 3px 4px;
+    font-size: 14px;
+    color: rgb(19, 18, 18);
+}
+.EditPostForm textarea{
+    background-color: transparent;
+    border: solid 1.5px #444040;
+    padding: 4px 5px;
+    margin: 5px 0;
+    resize: none;
+    border-radius: 5px;
+}
+.EditPostForm textarea:focus{
+    outline: none;
+}
+
+/* ***************** Btns **************** */
+.Btns{
+    position: absolute;
+    top: 5px;
+    right: 16px;
+    display: block;
+    margin-bottom: 20px;
+}
+.SaveBtn{
+    font-size: 12px;
+    font-weight: 400;
+}
+.Btns button,
+.SaveBtn button{
+    background-color: transparent;
+    border: none;
+    color: rgb(27, 23, 23);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.Btns button:focus,
+.Btns button:hover,
+.SaveBtn button:focus,
+.SaveBtn button:hover{
+    text-decoration: underline;
+    filter: brightness(200%);
+    outline: none;
+}
+

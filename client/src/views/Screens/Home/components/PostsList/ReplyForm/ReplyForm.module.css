@@ -1,0 +1,122 @@
+
+
+.PostForm{
+    border: solid 1px var(--color-primary-darker);
+    background-color: var(--color-primary-darker);
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-left: 35px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+  
+.PostForm textarea {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    text-indent: 5px;
+    border: none;
+    color: rgb(32, 32, 32);
+    font-size: 14px;
+    text-indent: 15px;
+    padding: 5px 0;
+}
+.PostForm textarea:focus {
+    border: none;
+    outline: none;
+    height: 45px;
+}
+  
+  
+.SubmitPostBtn,
+.LoadingBtn{
+    border-radius: 3px;
+    margin-top: 10px;    
+    font-weight: 500;    
+    vertical-align: middle;
+    align-self: flex-end;
+    color: white;
+    border: none;
+    outline: none;
+}
+.SubmitPostBtn  {
+    background-color:var(--color-primary-light) ;
+    color: white;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+.SubmitPostBtn:hover {
+    background-color: var(--color-primary);
+}
+.LoadingBtn {
+    background-color:#9cb4d8;
+    width: 70px;
+    height: 25px;
+    border: none;
+    cursor: progress;
+}
+.SubmitPostBtn:hover,
+.SubmitPostBtn:focus,
+.SubmitPostBtn:active,
+.LoadingBtn :hover,
+.LoadingBtn :focus,
+.LoadingBtn :active
+{
+    outline: none;
+    box-shadow : none,
+}
+  
+
+  .ReplyBtn{
+    display: inline;
+    color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+    font-weight: 550;
+  }
+
+  .ReplyBtn:hover{
+      opacity: 1;
+  }
+
+.PostForm button{
+    width: 45px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 8px;
+    border: none;
+    height: auto;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+.SubmitBtn  {
+    font-size: 12px;
+    color: white;
+    padding: 3px 3px;
+}
+.SubmitBtn button  {
+    background-color: transparent;
+    color: var(--color-primary-light);
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+.SubmitBtn button:focus,
+.SubmitBtn button:hover{
+    text-decoration: underline;
+    filter: brightness(150%);
+    outline: none;
+}

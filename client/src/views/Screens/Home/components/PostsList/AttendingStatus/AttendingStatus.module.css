@@ -1,0 +1,27 @@
+.NotAttStatus,
+.AttStatus{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+
+.AttStatus{
+    background-color: #469a1f;
+}
+
+.NotAttStatus{
+    background-color: #9da1a8;
+    border: solid 0.1px white;
+}
+
+.NotAttStatus h6,
+.AttStatus h6{
+    color: var(--color-secondary-dark);
+    font-size: 10px;
+    opacity: 0.7;
+    margin-bottom: 3px;
+    font-weight: 400;
+}

@@ -1,9 +1,9 @@
 import React  from "react";
 
-
-
-
 import PostForm from './components/PostForm/PostForm';
+import PostsList from './components/PostsList/PostsList'
+
+
 import classes from './Home.module.css';
 import bg2 from '../../../assets/imgs/bg2.jpg';
 
@@ -20,6 +20,9 @@ const Home = () => {
             </header>
 
             <main className={classes.PostsListWrapper}>
+            <section className={[classes.Posts, "vertical-layout"].join(' ')}>
+                    <PostsList   />
+                </section>
             </main>
         </div>
     )
