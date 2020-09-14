@@ -11,7 +11,7 @@ const App = () =>
   <div className="app">
     <Layout>
       <Switch>
-        <Route path="/guestbook" exact render={() => <Suspense fallback={Spinner}><Home /></Suspense>} />
+        <Route path="/home" exact render={() => <Suspense fallback={Spinner}><Home /></Suspense>} />
         <Route path="/" exact component={LandingScreen} />
       </Switch>
     </Layout>

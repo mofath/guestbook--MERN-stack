@@ -1,0 +1,64 @@
+
+.Home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+/* ********************** Start Header Rules ************************** */
+.HeaderWrapper{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HeaderWrapper::after {
+    content: "Happy Wedding"; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-image: linear-gradient(to top, var(--color-primary-darker), transparent);
+    opacity: .7;
+}
+.HeaderWrapper img{
+    width: 100%;
+    height: auto;
+}
+/* ********************** End Header Rules ************************** */
+
+
+/* ********************** Start Form Rules ************************** */
+.PostFormWrapper{
+    position: absolute;
+    display: flex;
+    width: calc(55% + 75px);
+    justify-items: center;
+    align-items: center;
+    z-index: 100;
+    top: 85%;
+}
+/* ********************** End Form Rules ************************** */
+
+
+/* ********************** Start PostsList Rules ************************** */
+.PostsListWrapper{
+    position: relative;
+    background-image: url("../../../assets/imgs/bg3.jpg");
+    background-attachment: fixed;
+    background-size: cover; 
+    background-color: rgb(110, 34, 34);
+    height: auto;
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+/* ********************** End PostsList Rules ************************** */
+
+
+
