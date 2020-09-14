@@ -18,9 +18,22 @@ import {
 } from "./types";
 
 import { getMessage, displayMessage } from '../alert/actions';
-import authService from '../../../_services/auth.service';
+import authService from '../../../_services/auth.service'
 
 let msgBody = null;
+
+
+const authenticate = () => async (dispatch) => {
+  dispatch({ type: AUTH_REQUEST });
+  try {
+    const { data } = await authService.authenticate();
+    dispatch({ type: AUTH_SUCCESS, payload: { userInfo: data.userInfo } });
+  }
+  catch (error) {
+    msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
+    dispatch({ type: AUTH_FAIL });
+  }
+}
 
 
 const loginAction = (loginData) => async (dispatch) => {
@@ -37,8 +50,6 @@ const loginAction = (loginData) => async (dispatch) => {
     dispatch(displayMessage("info"))
   }
 }
-
-
 
 const signupAction = (signupData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
@@ -57,12 +68,25 @@ const signupAction = (signupData) => async (dispatch) => {
 }
 
 
-
-
-
+const logoutAction = () => async (dispatch) => {
+  dispatch({ type: LOGOUT_REQUEST });
+  try {
+    const { data } = await authService.logout();
+    dispatch(getMessage(data.message.msgBody, false, LOGOUT_REQUEST))
+    dispatch({ type: LOGOUT_SUCCESS });
+    dispatch(displayMessage("info"))
+  }
+  catch (error) {
+    dispatch(getMessage("Failed to logout, Try Again!", true, LOGOUT_REQUEST))
+    dispatch({ type: LOGOUT_FAIL });
+    dispatch(displayMessage("info"))
+  }
+}
 
 
 export {
-  signupAction,
   loginAction,
+  signupAction,
+  authenticate,
+  logoutAction,
 };

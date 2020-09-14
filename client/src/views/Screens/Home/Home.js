@@ -24,12 +24,12 @@ const Home = () => {
     useEffect(() => { dispatch(getAllPostsAction()) }, []);
 
     const submitPost = (postText) => {
-        // if (isAuthenticated) 
+        if (isAuthenticated) 
         dispatch(submitPostAction(postText));
-        // else {
+        else {
             // dispatch(getMessage(AuthMsg, true));
             // dispatch(displayMessage('info'));
-        // }
+        }
     }
 
     const submitReply = ({ index, id, replyText }) => {
