@@ -5,15 +5,15 @@ const postController = require('../controllers/post.controller');
 const authorize = require('../middlewares/authorize');
 
 
-// router.get("/");
+router.get("/", postController.getAllPosts);
 
-router.post("/", authorize.requireAuth, postController.submitPost);
+router.post("/", authorize.requireAuth, postController.addNewPost);
 
-// router.delete("/:id");
+router.delete("/:id", authorize.requireAuth, postController.deletePostById);
 
-// router.patch("/:id");
+router.patch("/:id", authorize.requireAuth, postController.updatePostById);
 
-// router.post("/:id/reply");
+router.post("/:id/reply", authorize.requireAuth, postController.addNewReply);
 
 
 

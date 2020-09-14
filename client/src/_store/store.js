@@ -3,14 +3,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk'
 
 import { authReducer } from './modules/auth/reducer'
+import { postReducer } from './modules/post/reducer'
 import alertReducer from './modules/alert/reducer'
-
 
 const initialState = {};
 
-
 const reducer = combineReducers({
     authReducer: authReducer,
+    postReducer: postReducer,
     alertReducer: alertReducer,
 })
 

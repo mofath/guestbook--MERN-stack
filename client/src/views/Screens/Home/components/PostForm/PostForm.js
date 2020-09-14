@@ -28,4 +28,5 @@ const PostForm = ({ submit, loading }) => {
     )
 }
 
+
 export default PostForm;
