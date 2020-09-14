@@ -7,13 +7,14 @@ import Content from './Content/Content';
 import ReplyItem from './ReplyItem/ReplyItem';
 
 
-const PostsList = ({ posts, editPost, deletePost, submitReply }) => {
+const PostsList = ({ posts, editPost, deletePost, submitReply, userInfo }) => {
 
     return (
         <div className={classes.Timeline} >
-            {
+            {posts.length > 0 ?
                 posts.map((post, index) => {
-                    const { postText, writer: { username, attendingStatus }, createdAt, replies, _id: id } = post;
+                    const { postText, writer: { username, attendingStatus, _id:writerId }, createdAt, replies, _id: id } = post;
+                    const allow = userInfo && writerId === userInfo._id? true : false
                     return (
                         <div className={classes.Post} key={index}>
                             <PostHeader username={username} createdAt={createdAt} attendingStatus={attendingStatus} />
@@ -24,11 +25,12 @@ const PostsList = ({ posts, editPost, deletePost, submitReply }) => {
                                     editPost={editPost}
                                     id={id}
                                     index={index}
+                                    allow={allow}
                                 />
                             </div>
                             {
                                 replies.length > 0 ?
-                                    replies.map((reply, index) => <ReplyItem key={index} reply={reply} />)
+                                    replies.map((reply, index) => <ReplyItem key={index} reply={reply} allow={allow} />)
                                     :
                                     null
                             }
@@ -39,7 +41,9 @@ const PostsList = ({ posts, editPost, deletePost, submitReply }) => {
                             />
                         </div>
                     )
-                })
+                }) 
+                :
+                <div className={classes.NoNotes}>No Noets</div>
             }
         </div>
     )

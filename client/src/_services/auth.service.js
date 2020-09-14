@@ -6,7 +6,6 @@ export default {
     },
 
     signup: async (signupData) => {
-        alert(2)
         return Axios.post('/user/auth/signup', signupData)
     },
 

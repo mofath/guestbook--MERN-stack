@@ -20,7 +20,7 @@ const PostItem = ({ reply }) =>
         <div className={classes.ReplyContent}>
             {reply.replyText}
         </div>
-        <button class={classes.CloseBtn}>  &times;</button>
+        <button className={classes.CloseBtn}>  &times;</button>
     </div>
 
 

@@ -26,7 +26,6 @@ const Signup = () => {
     const history = useHistory();
     useEffect(() => {
         if (id === "REGISTER_REQUEST") {
-            alert(2);
             if (isAuthenticated && !isLoading) history.replace('/home')
         }
     }, [isAuthenticated]);

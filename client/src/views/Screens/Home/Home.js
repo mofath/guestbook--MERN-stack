@@ -17,7 +17,7 @@ const Home = () => {
     const postReducer = useSelector(state => state.postReducer);
     const authReducer = useSelector(state => state.authReducer);
     const { posts } = postReducer;
-    const { isAuthenticated } = authReducer;
+    const { isAuthenticated, userInfo } = authReducer;
 
     const dispatch = useDispatch();
 
@@ -27,16 +27,16 @@ const Home = () => {
         if (isAuthenticated) 
         dispatch(submitPostAction(postText));
         else {
-            // dispatch(getMessage(AuthMsg, true));
-            // dispatch(displayMessage('info'));
+            dispatch(getMessage("Please, Signin", true));
+            dispatch(displayMessage('info'));
         }
     }
 
     const submitReply = ({ index, id, replyText }) => {
         if (isAuthenticated) dispatch(submitReplyAction({ index, id, replyText }));
         else {
-            // dispatch(getMessage(AuthMsg, true));
-            // dispatch(displayMessage('info'));
+            dispatch(getMessage("Please, Signin", true));
+            dispatch(displayMessage('info'));
         }
     }
 
@@ -55,6 +55,7 @@ const Home = () => {
             <main className={classes.PostsListWrapper}>
                 <section className={[classes.Posts, "vertical-layout"].join(' ')}>
                     <PostsList
+                        userInfo={userInfo}
                         posts={posts}
                         deletePost={deletePost}
                         editPost={editPost}

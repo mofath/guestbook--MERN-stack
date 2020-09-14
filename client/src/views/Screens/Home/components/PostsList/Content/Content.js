@@ -15,7 +15,7 @@ const Content = (props) => {
         setType("dispay");
     }
 
-    const handleEdit = async() => {
+    const handleEdit = async () => {
         await props.editPost({ id: props.id, index: props.index, newPostText: ContentValue });
         setType("dispay");
     }
@@ -36,15 +36,17 @@ const Content = (props) => {
                         {props.content}
                     </div>
             }
-            <div className={classes.Btns}>
-                {
-                    Type === "form" ?
-                        <button onClick={handleEdit} >Save</button>
-                        :
-                        <button onClick={()=> setType("form")} >Edit</button>
-                }
-                <button onClick={() => props.deletePost({ id: props.id, index: props.index })}>Delete</button>
-            </div>
+            { props.allow &&
+                <div className={classes.Btns}>
+                    {
+                        Type === "form" ?
+                            <button onClick={handleEdit} >Save</button>
+                            :
+                            <button onClick={() => setType("form")} >Edit</button>
+                    }
+                    <button onClick={() => props.deletePost({ id: props.id, index: props.index })}>Delete</button>
+                </div>
+            }
         </div>
     )
 }

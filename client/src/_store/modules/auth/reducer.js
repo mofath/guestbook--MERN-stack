@@ -21,7 +21,7 @@ import {
 
 
 const INITIAL_STATE = {
-  isAuthenticated: null,
+  isAuthenticated: false,
   isLoading: null,
   userInfo: {},
 };
