@@ -22,7 +22,7 @@ import {
 
 
 import postService from '../../../_services/post.service'
-import { getMessage, displayMessage } from '../alert/actions';
+import { getMessage } from '../alert/actions';
 let msgBody = null;
 
 
@@ -37,7 +37,6 @@ const getAllPostsAction = () => async (dispatch) => {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, GET_ALL_POSTS))
         dispatch({ type: GET_ALL_POSTS_FAIL });
-        dispatch(displayMessage('auto'))
     }
 }
 
@@ -49,13 +48,11 @@ const submitPostAction = (postId) => async (dispatch) => {
         dispatch(getMessage(data.message.msgBody, data.message.msgError, ADD_NEW_POST))
         console.log(data.newAddedPost);
         dispatch({ type: ADD_NEW_POST_SUCCESS, payload: { newAddedPost: data.newAddedPost } });
-        dispatch(displayMessage('auto'))
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, ADD_NEW_POST))
         dispatch({ type: ADD_NEW_POST_FAIL });
-        dispatch(displayMessage('info'))
     }
 }
 
@@ -66,13 +63,11 @@ const deletePostAction = ({ id, index }) => async (dispatch) => {
         const { data } = await postService.deletePost(id);
         dispatch(getMessage(data.message.msgBody, data.message.msgError, DELETE_POST))
         dispatch({ type: DELETE_POST_SUCCESS, payload: { index } });
-        dispatch(displayMessage('auto'))
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, DELETE_POST))
         dispatch({ type: DELETE_POST_FAIL });
-        dispatch(displayMessage('info'))
     }
 }
 
@@ -83,13 +78,11 @@ const editPostAction = ({ id, index, newPostText }) => async (dispatch) => {
         const { data } = await postService.updatePost(id, newPostText);
         dispatch(getMessage(data.message.msgBody, data.message.msgError, EDIT_POST))
         dispatch({ type: EDIT_POST_SUCCESS, payload: { index, newPostText } });
-        dispatch(displayMessage('auto'))
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, EDIT_POST))
         dispatch({ type: EDIT_POST_FAIL });
-        dispatch(displayMessage('info'))
     }
 }
 
@@ -102,13 +95,11 @@ const submitReplyAction = ({index, id, replyText}) => async (dispatch) => {
         dispatch(getMessage(data.message.msgBody, data.message.msgError, ADD_NEW_REPLY))
         console.log(data.newAddedReply);
         dispatch({ type: ADD_NEW_REPLY_SUCCESS, payload: { index, newReply: data.newReply } });
-        dispatch(displayMessage('auto'))
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, ADD_NEW_REPLY))
         dispatch({ type: ADD_NEW_REPLY_FAIL });
-        dispatch(displayMessage('info'))
     }
 }
 
