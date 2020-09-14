@@ -17,7 +17,6 @@ import {
 
 } from "./types";
 
-import { getMessage, displayMessage } from '../alert/actions';
 import authService from '../../../_services/auth.service'
 
 let msgBody = null;
@@ -27,15 +26,12 @@ const signupAction = (signupData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
     const { data } = await authService.signup(signupData);
-    dispatch(getMessage(data.message.msgBody, false, REGISTER_REQUEST))
+    console.log(data);
     dispatch({ type: REGISTER_SUCCESS });
-    dispatch(displayMessage("info"))
   }
   catch (error) {
     msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
-    dispatch(getMessage(msgBody, true, REGISTER_REQUEST))
     dispatch({ type: REGISTER_FAIL });
-    dispatch(displayMessage("info"))
   }
 }
 

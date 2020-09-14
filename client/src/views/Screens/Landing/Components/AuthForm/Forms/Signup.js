@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import { signupAction } from "../../../../../../_store/modules/auth/actions";
 
 import SignupForm from './form';
 
@@ -15,8 +17,10 @@ const Signup = () => {
     const { handleChange, handleSubmit, values, errors } = SignupForm(submit, initialState);
 
 
+    const dispatch = useDispatch();
     async function submit(signupData) {
         console.log(signupData);
+        await dispatch(signupAction(signupData))
     }
 
 
