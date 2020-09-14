@@ -1,15 +1,29 @@
 import React from 'react';
 
 
+import SignupForm from './form';
 
 import classes from './Form.module.css';
 
-export default function Signup(props) {
+const initialState = {
+    username: '',
+    password: '',
+    attendingStatus: 'Attending',
+};
+
+const Signup = () => {
+    const { handleChange, handleSubmit, values, errors } = SignupForm(submit, initialState);
+
+
+    async function submit(signupData) {
+        console.log(signupData);
+    }
 
 
     return (
         <form
             className={[classes.Form, 'vertical-layout'].join(' ')}
+            onSubmit={handleSubmit}
         >
             <div >
                 {/* *************** usename input group **************  */}
@@ -18,6 +32,9 @@ export default function Signup(props) {
                     <input type='text'
                         className={classes.InputElement}
                         name='username'
+                        value={values.username}
+                        onChange={handleChange}
+                        // className={`signup-input ${errors.username && 'inputError'}`}
                         placeholder='Username'
                     />
                 </div>
@@ -28,6 +45,8 @@ export default function Signup(props) {
                     <input type='password'
                         className={classes.InputElement}
                         name='password'
+                        value={values.password}
+                        onChange={handleChange}
                         // className={`signup-input ${errors.password && 'inputError'}`}
                         placeholder='Password'
                     />
@@ -36,11 +55,11 @@ export default function Signup(props) {
                 <div className={[classes.RadioGroup, 'horizontal-layout'].join(' ')}>
                     <p >Are You Attending?</p>
                     <label htmlFor="attend" >
-                        <input type="radio" id="attend" name="attendingStatus" value="Attending" checked />
+                        <input type="radio" id="attend" name="attendingStatus" value="Attending" onChange={handleChange} checked />
                         &nbsp;&nbsp;Yes
                     </label>
                     <label htmlFor="not-attend" >
-                        <input type="radio" id="not-attend" name="attendingStatus" value="Not Attending"  />
+                        <input type="radio" id="not-attend" name="attendingStatus" value="Not Attending" onChange={handleChange} />
                         &nbsp;&nbsp;No
                     </label>
                 </div>
@@ -52,3 +71,5 @@ export default function Signup(props) {
         </form>
     )
 }
+
+export default Signup;

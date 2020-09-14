@@ -1,18 +1,24 @@
 import React from 'react';
 
-import classes from './Form.module.css'
+import LoginForm from './form';
+import classes from './Form.module.css';
+
+const initialState = {
+    username: '',
+    password: ''
+};
 
 
+const Login = (props) => {
+    const { handleChange, handleSubmit, values } = LoginForm(submit, initialState);
 
-
-
-function Login(props) {
-
-
+    async function submit (loginData) {
+        console.log(loginData);
+    }
 
     return (
         <form
-
+            onSubmit={handleSubmit}
             className={[classes.Form, 'vertical-layout'].join(' ')}
         >
             <div >
@@ -23,6 +29,8 @@ function Login(props) {
                     <input type='text'
                         className={classes.InputElement}
                         name='username'
+                        value={values.username}
+                        onChange={handleChange}
                         placeholder='Username'
                     />
                 </div>
@@ -33,6 +41,8 @@ function Login(props) {
                     <input type='password'
                         className={classes.InputElement}
                         name='password'
+                        value={values.password}
+                        onChange={handleChange}
                         placeholder='Password'
                     />
                 </div>
@@ -47,4 +57,3 @@ function Login(props) {
 }
 
 export default Login;
-// withRouter(Login);
