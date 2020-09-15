@@ -7,25 +7,8 @@ It's a web app project that resembles gustbook where gusts/visitors create an ac
 
 npm node, creat-react-app installed in  your machine 
 
-### Installing
-
-To start server move into server directory and run those instrauctions in squence
-```
-npm install
-
-You got get message that server is listening
 
 
-
-```
-To start client move into client directory and run those instrauctions in squence
-```
-npm install
-```
-npm start
-```
-until finished
-```
 
 
 ## Feature developed in the client side
