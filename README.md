@@ -20,7 +20,7 @@ until finished
 You got get message that server is listening
 
 
-## Feature developed create in the client side
+## Feature developed in the client side
 
 - crate and acount validate inputs and return errors
 - login with credentials and user get access token valid for 24 hours
@@ -32,9 +32,9 @@ You got get message that server is listening
 - allow only authenticated user to post and reply
 - add, edit, delet, reply are dynamically rendered as they are managed with redux
 - no library  or third party backage is used, all component/fonts are developed
+'
 
-
-## Feature developed create in the client side
+## Feature developed create in the server side
 
 - the project has two models: user an post
 - post has reply embedded model
