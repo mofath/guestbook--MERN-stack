@@ -12,11 +12,7 @@ npm node, creat-react-app installed in  your machine
 To start server move into server directory and run those instrauctions in squence
 ```
 npm install
-```
-node server.js
-```
-until finished
-```
+
 You got get message that server is listening
 
 
