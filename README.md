@@ -1,4 +1,4 @@
-# Guestbook -- MERN stacj
+# Guestbook -- MERN stack
 
 It's a web app project that resembles gustbook where gusts/visitors create an acount and leave a comment/note conguratlation and owner and guest could reply to each other and communicate
 
@@ -18,6 +18,18 @@ node server.js
 until finished
 ```
 You got get message that server is listening
+
+
+
+```
+To start client move into client directory and run those instrauctions in squence
+```
+npm install
+```
+npm start
+```
+until finished
+```
 
 
 ## Feature developed in the client side
@@ -41,5 +53,7 @@ You got get message that server is listening
 - password is encrybted before being saved to database
 - folder structure is devided into conroroller, routes and models
 - two midlleware wares are developed to protect resources; reuire auth and reuire admin
-- reuireAuth is used against any request that tries to access authenticated user resources, it extracts cookie and verify it and check if it's valid or expired, if it's valid it will attach the user claims used to creat the token to and attach it to the the reuest and pass it to the next ,iddleware.
+- reuireAuth is used against any request that tries to access authenticated user resources, it extracts cookie and verify it and 
+check if it's valid or expired, if it's valid it will attach the user claims used to creat the token to 
+and attach it to the the reuest and pass it to the next ,iddleware.
 
