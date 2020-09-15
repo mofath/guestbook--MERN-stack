@@ -19,7 +19,18 @@ const LoginForm = (callback, initialState) => {
         } else if (values.password.length < 3) {
             errors.password = 'Password must be more than 3 characters'
         }
+
+        if (!values.username) {
+            errors.username = 'Username is Required'
+            alert(1)
+        } else if (values.username.length < 3) {
+            errors.username = 'Username must be more than 3 characters'
+        }
+
+        
+        
         return errors;
+
     }    
 
     const handleSubmit = (event) => {

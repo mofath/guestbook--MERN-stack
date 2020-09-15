@@ -15,6 +15,7 @@
 }
 
 /* ********************* Start Input Rules ***************************** */
+.Form  input.InputError
 .Form  input.InputElement::selection,
 .Form  input.InputElement:focus,
 .Form  input.InputElement:active,
@@ -31,6 +32,11 @@
     border-bottom: 1.5px solid white;
     outline: none;
 }
+
+.Form  input.InputError{
+    border-bottom: 1.5px solid red!important;
+}
+
 
 .Form label {
     color: white;
@@ -115,4 +121,10 @@
     display: inline-block;
     visibility: visible;
     border: 1px solid white;
+}
+
+.Error{
+    color:yellow;
+    font-size: 10px!important;
+    margin-left: 100px;
 }

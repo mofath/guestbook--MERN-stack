@@ -12,7 +12,7 @@ const PostHeader = ({ username, createdAt, attendingStatus }) => <div className=
     <div className={["vertical-layout", classes.UserData].join(' ')}>
         <h5>{username}</h5>
         <h6 className={classes.Time}>{dynamicFormat(createdAt)}&nbsp;&#183;&nbsp;<span><FaGlobeAfrica /></span></h6>
-        <AttendingStatus status={attendingStatus} />
+        <AttendingStatus status={attendingStatus} type="light" />
     </div>
 </div>
 

@@ -1,7 +1,6 @@
 
 
 /* ******************** Start General Rules ********************* */
-/* @import "./normalise.css"; */
 
 *{
     box-sizing: border-box;
@@ -17,6 +16,9 @@
     --color-primary-lighter: #e094f8;
     --color-secondary-dark:#96968e;
     --color-secondary-darker:#555555;
+
+    --light: 80;
+    --threshold: 60;
   }
   
   a:hover {

@@ -14,7 +14,7 @@ const initialState = {
 
 
 const Login = (props) => {
-    const { handleChange, handleSubmit, values } = LoginForm(submit, initialState);
+    const { handleChange, handleSubmit, values, errors } = LoginForm(submit, initialState);
 
     const authReducer = useSelector(state => state.authReducer);
     const alertReducer = useSelector(state => state.alertReducer)
@@ -44,25 +44,29 @@ const Login = (props) => {
                 <div className={[classes.FormGroup, 'horizontal-layout'].join(' ')}>
                     <label>Username *</label>
                     <input type='text'
-                        className={classes.InputElement}
+                        className={[classes.InputElement, errors.username && classes.InputError].join(' ')}
                         name='username'
                         value={values.username}
                         onChange={handleChange}
                         placeholder='Username'
                     />
                 </div>
+                {errors.username && <small className={classes.Error}>{errors.username}</small>}
+
 
                 {/* *************** password input group **************  */}
                 <div className={[classes.FormGroup, 'horizontal-layout'].join(' ')}>
                     <label>Code Word *</label>
                     <input type='password'
-                        className={classes.InputElement}
+                        className={[classes.InputElement, errors.password && classes.InputError].join(' ')}
                         name='password'
                         value={values.password}
                         onChange={handleChange}
                         placeholder='Password'
                     />
                 </div>
+                {errors.username && <small className={classes.Error}>{errors.username}</small>}
+
 
 
                 {/* *************** submit button **************  */}

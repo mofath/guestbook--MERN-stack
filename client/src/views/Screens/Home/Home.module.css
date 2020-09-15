@@ -57,6 +57,7 @@
     display: flex;
     justify-items: center;
     align-items: center;
+    min-height: 500px!important;
 }
 .PostsListWrapper::after {
     content: "";
@@ -80,3 +81,21 @@
 
 
 
+.NoNotes{
+    background: var(--color-secondary-darker);
+    /* color: var(--color-primary-lighter); */
+    color: white;
+    opacity: 1;
+    width: 20%;
+    margin-left: 25%;
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-family: Marriage;
+    font-size: 20px;
+    position: absolute;
+    right: 40%;
+    top: 20%;
+    opacity: 0.5;
+}

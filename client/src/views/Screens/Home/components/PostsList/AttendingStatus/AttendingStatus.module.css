@@ -1,5 +1,5 @@
 .NotAttStatus,
-.AttStatus{
+.Attend{
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -8,20 +8,23 @@
     margin-right: 3px;
 }
 
-.AttStatus{
+.Attend{
     background-color: #469a1f;
 }
 
-.NotAttStatus{
+.NotAttend{
     background-color: #9da1a8;
     border: solid 0.1px white;
 }
 
-.NotAttStatus h6,
-.AttStatus h6{
+
+.Status h6{
     color: var(--color-primary-lighter);
     font-size: 10px;
     opacity: 0.7;
     margin-bottom: 3px;
     font-weight: 400;
+
+    --switch: calc((var(--light) - var(--threshold)) * -100%);
+    color: hsl(0, 0%, var(--switch));
 }

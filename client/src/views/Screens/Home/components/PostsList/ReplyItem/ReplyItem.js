@@ -12,7 +12,7 @@ const PostItem = ({ reply, allow }) =>
             <div className={[classes.UserData, "horizontal-layout"].join(" ")}>
                 <div className="vertical-layout">
                     <h5>{reply.writer.username}</h5>
-                    <AttendingStatus status={reply.writer.attendingStatus} />
+                    <AttendingStatus status={reply.writer.attendingStatus} type="dark" />
                 </div>
                 <h6>{dynamicFormat(reply.replyDate)}</h6>
             </div>

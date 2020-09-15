@@ -9,6 +9,7 @@ const authController = {
         console.log('\x1b[33m%s\x1b[0m', "...SIGNUP REQUEST...");
 
         const { username, password, attendStatus } = req.body;
+        console.log(req.body);
 
         try {
             await DBManager.CONNECT();
@@ -17,10 +18,16 @@ const authController = {
                 DBManager.DISCONNECT();
                 return res.status(403).json({ message: { msgBody: 'Username is already taken, Try another one', msgError: true } })
             } else {
-                const newUser = new UserModel({ username: username.toLowerCase(), password, attendStatus })
-                await newUser.save();
+                const newUser = new UserModel({ username: username.toLowerCase(),password: req.body.password, attendStatus })
+                const savedUser = await newUser.save();
                 DBManager.DISCONNECT();
-                return res.status(201).send({ message: { msgBody: 'Account successfully created', msgError: false } });
+                const { password, ...rest } = savedUser._doc;
+                const token = jwtToken.createToken({ userId: savedUser._id, username: savedUser.username, role: savedUser.role });
+                res.cookie('access_token', token, { httpOnly: true, sameSite: true });
+                return res.status(201).json({
+                    message: { msgBody: `Account successfully created`, msgError: false },
+                    isAuthenticated: true, userInfo: rest
+                });
             }
         }
         catch (err) {

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
@@ -46,27 +46,29 @@ const Signup = () => {
                 <div className={[classes.FormGroup, 'horizontal-layout'].join(' ')}>
                     <label>Username *</label>
                     <input type='text'
-                        className={classes.InputElement}
+                        className={[classes.InputElement, errors.username && classes.InputError].join(' ')}
                         name='username'
                         value={values.username}
                         onChange={handleChange}
-                        // className={`signup-input ${errors.username && 'inputError'}`}
                         placeholder='Username'
                     />
                 </div>
+                {errors.username && <small className={classes.Error}>{errors.username}</small>}
+
 
                 {/* *************** password input group **************  */}
                 <div className={[classes.FormGroup, 'horizontal-layout'].join(' ')}>
                     <label>Code Word *</label>
                     <input type='password'
-                        className={classes.InputElement}
+                        className={[classes.InputElement, errors.password && classes.InputError].join(' ')}
                         name='password'
                         value={values.password}
                         onChange={handleChange}
-                        // className={`signup-input ${errors.password && 'inputError'}`}
-                        placeholder='Password'
+                        placeholder='Code Word'
                     />
                 </div>
+                {errors.password && <small className={classes.Error}>{errors.password}</small>}
+
 
                 <div className={[classes.RadioGroup, 'horizontal-layout'].join(' ')}>
                     <p >Are You Attending?</p>

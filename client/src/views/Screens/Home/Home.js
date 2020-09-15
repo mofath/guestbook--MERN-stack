@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from 'react-redux';
-
 import { getMessage, displayMessage } from '../../../_store/modules/alert/actions';
-import { getAllPostsAction, submitPostAction, deletePostAction, editPostAction, submitReplyAction } from '../../../_store/modules/post/actions';
-// import { AuthMsg } from "../../../../../assets/data/msgs";
-
-
+import {
+    getAllPostsAction,
+    submitPostAction,
+    deletePostAction,
+    editPostAction,
+    submitReplyAction
+} from '../../../_store/modules/post/actions';
 import PostForm from './components/PostForm/PostForm';
 import PostsList from './components/PostsList/PostsList';
-
+import Footer from './components/Footer/Footer';
 import classes from './Home.module.css';
 import bg2 from '../../../assets/imgs/bg2.jpg';
 
@@ -24,8 +26,8 @@ const Home = () => {
     useEffect(() => { dispatch(getAllPostsAction()) }, []);
 
     const submitPost = (postText) => {
-        if (isAuthenticated) 
-        dispatch(submitPostAction(postText));
+        if (isAuthenticated)
+            dispatch(submitPostAction(postText));
         else {
             dispatch(getMessage("Please, Signin", true));
             dispatch(displayMessage('info'));
@@ -45,24 +47,28 @@ const Home = () => {
 
     return (
         <div className={[classes.Home, "vertical-layout"].join(' ')}>
-            <header className={classes.HeaderWrapper} >
+            <section className={classes.HeaderWrapper} >
                 <img src={bg2} alt="" />
-                <section className={classes.PostFormWrapper}>
+                <div className={classes.PostFormWrapper}>
                     <PostForm submit={submitPost} />
-                </section>
-            </header>
+                </div>
+            </section>
 
-            <main className={classes.PostsListWrapper}>
-                <section className={[classes.Posts, "vertical-layout"].join(' ')}>
-                    <PostsList
-                        userInfo={userInfo}
-                        posts={posts}
-                        deletePost={deletePost}
-                        editPost={editPost}
-                        submitReply={submitReply}
-                    />
-                </section>
-            </main>
+            <section className={classes.PostsListWrapper}>
+                <div className={[classes.Posts, "vertical-layout"].join(' ')}>
+                    {posts.length > 0 ?
+                        <PostsList
+                            userInfo={userInfo}
+                            posts={posts}
+                            deletePost={deletePost}
+                            editPost={editPost}
+                            submitReply={submitReply}
+                        />
+                        : <div className={classes.NoNotes}>No Noets</div>
+                    }
+                </div>
+            </section>
+            <Footer />
         </div>
     )
 

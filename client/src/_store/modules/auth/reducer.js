@@ -39,6 +39,7 @@ function authReducer(state = INITIAL_STATE, action) {
         isLoading: true,
       };
 
+    case REGISTER_SUCCESS:
     case AUTH_SUCCESS:
     case LOGIN_SUCCESS:
       return {
@@ -47,7 +48,6 @@ function authReducer(state = INITIAL_STATE, action) {
         userInfo: action.payload.userInfo,
       };
 
-    case REGISTER_SUCCESS:
     case LOGOUT_FAIL:
       return {
         ...state,

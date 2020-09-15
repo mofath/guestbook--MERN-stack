@@ -11,7 +11,7 @@ const PostsList = ({ posts, editPost, deletePost, submitReply, userInfo }) => {
 
     return (
         <div className={classes.Timeline} >
-            {posts.length > 0 ?
+            {
                 posts.map((post, index) => {
                     const { postText, writer: { username, attendingStatus, _id:writerId }, createdAt, replies, _id: id } = post;
                     const allow = userInfo && writerId === userInfo._id? true : false
@@ -42,8 +42,7 @@ const PostsList = ({ posts, editPost, deletePost, submitReply, userInfo }) => {
                         </div>
                     )
                 }) 
-                :
-                <div className={classes.NoNotes}>No Noets</div>
+
             }
         </div>
     )

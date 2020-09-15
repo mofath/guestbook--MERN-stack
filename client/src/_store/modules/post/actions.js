@@ -22,7 +22,7 @@ import {
 
 
 import postService from '../../../_services/post.service'
-import { getMessage } from '../alert/actions';
+import { displayMessage, getMessage } from '../alert/actions';
 let msgBody = null;
 
 
@@ -30,12 +30,12 @@ const getAllPostsAction = () => async (dispatch) => {
     dispatch({ type: GET_ALL_POSTS });
     try {
         const { data } = await postService.getAllPosts();
-        dispatch(getMessage(data.message.msgBody, false, GET_ALL_POSTS))
         dispatch({ type: GET_ALL_POSTS_SUCCESS, payload: { posts: data.posts } });
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
-        dispatch(getMessage(msgBody, true, GET_ALL_POSTS))
+        dispatch(getMessage(msgBody, true, GET_ALL_POSTS));
+        dispatch(displayMessage('auto'))
         dispatch({ type: GET_ALL_POSTS_FAIL });
     }
 }
@@ -45,13 +45,12 @@ const submitPostAction = (postId) => async (dispatch) => {
     dispatch({ type: ADD_NEW_POST });
     try {
         const { data } = await postService.submitPost(postId)
-        dispatch(getMessage(data.message.msgBody, data.message.msgError, ADD_NEW_POST))
-        console.log(data.newAddedPost);
         dispatch({ type: ADD_NEW_POST_SUCCESS, payload: { newAddedPost: data.newAddedPost } });
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, ADD_NEW_POST))
+        dispatch(displayMessage('auto'))
         dispatch({ type: ADD_NEW_POST_FAIL });
     }
 }
@@ -67,6 +66,7 @@ const deletePostAction = ({ id, index }) => async (dispatch) => {
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
         dispatch(getMessage(msgBody, true, DELETE_POST))
+        dispatch(displayMessage('auto'))
         dispatch({ type: DELETE_POST_FAIL });
     }
 }
@@ -92,13 +92,14 @@ const submitReplyAction = ({index, id, replyText}) => async (dispatch) => {
     dispatch({ type: ADD_NEW_REPLY });
     try {
         const { data } = await postService.submitReply({id, replyText})
-        dispatch(getMessage(data.message.msgBody, data.message.msgError, ADD_NEW_REPLY))
+        dispatch(getMessage(data.message.msgBody, data.message.msgError, ADD_NEW_REPLY));
         console.log(data.newAddedReply);
         dispatch({ type: ADD_NEW_REPLY_SUCCESS, payload: { index, newReply: data.newReply } });
     }
     catch (error) {
         msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
-        dispatch(getMessage(msgBody, true, ADD_NEW_REPLY))
+        dispatch(getMessage(msgBody, true, ADD_NEW_REPLY));
+        dispatch(displayMessage('auto'))
         dispatch({ type: ADD_NEW_REPLY_FAIL });
     }
 }
