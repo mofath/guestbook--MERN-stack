@@ -5,7 +5,7 @@ import { dynamicFormat } from '../../../../../../_utils/date_format';
 import Avatar from '../../../../../UI/Avatar/Avatar';
 import AttendingStatus from "../AttendingStatus/AttendingStatus";
 
-const PostItem = ({ reply }) =>
+const PostItem = ({ reply, allow }) =>
     <div className={classes.ReplyItem}>
         <div className={[classes.ReplyHeader, "horizontal-layout"].join(' ')}>
             <Avatar size="27px" />
@@ -20,7 +20,7 @@ const PostItem = ({ reply }) =>
         <div className={classes.ReplyContent}>
             {reply.replyText}
         </div>
-        <button className={classes.CloseBtn}>  &times;</button>
+        {allow && <button className={classes.CloseBtn}>  &times;</button>}
     </div>
 
 
