@@ -8,7 +8,7 @@ const authController = {
     signUp: async (req, res, next) => {
         console.log('\x1b[33m%s\x1b[0m', "...SIGNUP REQUEST...");
 
-        const { username, password, attendStatus } = req.body;
+        const { username, password, attendingStatus } = req.body;
         console.log(req.body);
 
         try {
@@ -18,8 +18,9 @@ const authController = {
                 DBManager.DISCONNECT();
                 return res.status(403).json({ message: { msgBody: 'Username is already taken, Try another one', msgError: true } })
             } else {
-                const newUser = new UserModel({ username: username.toLowerCase(),password: req.body.password, attendStatus })
+                const newUser = new UserModel({ username: username.toLowerCase(), password: req.body.password, attendingStatus :attendingStatus })
                 const savedUser = await newUser.save();
+                console.log(savedUser);
                 DBManager.DISCONNECT();
                 const { password, ...rest } = savedUser._doc;
                 const token = jwtToken.createToken({ userId: savedUser._id, username: savedUser.username, role: savedUser.role });

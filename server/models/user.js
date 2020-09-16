@@ -20,13 +20,10 @@ const userSchema = new mongoose.Schema(
         },
         attendingStatus: {
             type: String,
-            default: "Attending"
         }
     },
     { timestamps: true }
 );
-
-
 
 
 userSchema.pre('save', function (next) {
@@ -46,26 +43,7 @@ userSchema.pre('save', function (next) {
         });
 });
 
-userSchema.methods.comparePassword = function (candidatePassword, cb) {
-    var user = this;
 
-    return new Promise(function (resolve, reject) {
-        bcrypt.compare(candidatePassword, user.password, function (err, isMatch) {
-            if (err) {
-                reject(new Error("Error checking use password"));
-                return cb(err);
-            } else {
-                if (!isMatch) {
-                    reject('passwords dont match')
-                    return cb(null, isMatch);
-                } else {
-                    resolve('passwords match')
-                    return cb(null, user);
-                }
-            }
-        });
-    });
-};
 
 
 const UserModel = mongoose.model('User', userSchema);
