@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import classes from './Content.module.css';
+import classes from './PostContent.module.css';
 
-const Content = (props) => {
+const PostContent = (props) => {
     const [ContentValue, setcontentValue] = useState(props.content);
     const [Type, setType] = useState("display");
 
@@ -36,7 +36,7 @@ const Content = (props) => {
                         {props.content}
                     </div>
             }
-            { props.allow &&
+            { props.authorized &&
                 <div className={classes.Btns}>
                     {
                         Type === "form" ?
@@ -51,6 +51,6 @@ const Content = (props) => {
     )
 }
 
-export default Content;
+export default PostContent;
 
 

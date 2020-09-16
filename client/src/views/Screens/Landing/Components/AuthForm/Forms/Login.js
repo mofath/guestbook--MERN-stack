@@ -65,7 +65,7 @@ const Login = (props) => {
                         placeholder='Password'
                     />
                 </div>
-                {errors.username && <small className={classes.Error}>{errors.username}</small>}
+                {errors.password && <small className={classes.Error}>{errors.password}</small>}
 
 
 

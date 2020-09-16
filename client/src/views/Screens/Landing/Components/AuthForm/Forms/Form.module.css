@@ -10,7 +10,8 @@
 }
 .FormGroup{
     width: 100%;
-    margin-bottom: 15px;
+    min-height: 30px;
+    margin-bottom: 30px;
     justify-content: space-between;
 }
 
@@ -124,7 +125,9 @@
 }
 
 .Error{
+    position: absolute;
     color:yellow;
     font-size: 10px!important;
-    margin-left: 100px;
+    margin-left: 90px;
+    margin-top: -26px;
 }

@@ -43,7 +43,12 @@ const Home = () => {
     }
 
     const deletePost = ({ index, id }) => dispatch(deletePostAction({ index, id }));
+
     const editPost = ({ index, id, newPostText }) => dispatch(editPostAction({ index, id, newPostText }));
+
+    const authorize = (ownerId) => userInfo && ownerId === userInfo._id? true : false;
+
+
 
     return (
         <div className={[classes.Home, "vertical-layout"].join(' ')}>
@@ -63,6 +68,7 @@ const Home = () => {
                             deletePost={deletePost}
                             editPost={editPost}
                             submitReply={submitReply}
+                            authorize={authorize}
                         />
                         : <div className={classes.NoNotes}>No Noets</div>
                     }
