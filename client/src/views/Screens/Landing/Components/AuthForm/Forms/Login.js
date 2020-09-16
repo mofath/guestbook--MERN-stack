@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ const initialState = {
 
 
 const Login = (props) => {
+    const [Loading, setLoading] = useState(false);
     const { handleChange, handleSubmit, values, errors } = LoginForm(submit, initialState);
 
     const authReducer = useSelector(state => state.authReducer);
@@ -31,7 +32,9 @@ const Login = (props) => {
 
     const dispatch = useDispatch();
     async function submit(loginData) {
-        await dispatch(loginAction(loginData))
+        setLoading(true);
+        await dispatch(loginAction(loginData));
+        setLoading(false);
     }
 
     return (
@@ -71,7 +74,13 @@ const Login = (props) => {
 
 
                 {/* *************** submit button **************  */}
-                <input type='submit' value='Login' />
+                <button
+                    className={classes.SubmitBtn}
+                    type='submit'
+                    disabled={!(values.password.length > 0 && values.username.length > 0) || Loading}
+                >
+                    {Loading ? <span><i className="fa fa-spinner fa-spin" />&nbsp;&nbsp;Loading</span> : "Log In"}
+                </button>
 
             </div>
         </form>

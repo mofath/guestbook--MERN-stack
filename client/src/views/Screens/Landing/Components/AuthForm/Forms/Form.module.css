@@ -34,6 +34,11 @@
     outline: none;
 }
 
+.Form  input.InputElement:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .Form  input.InputError{
     border-bottom: 1.5px solid red!important;
 }
@@ -51,7 +56,7 @@
 /* ********************* Start Input Rules ***************************** */
 
 /* ********************* Start Submit Button Rules ***************************** */
-.Form input[type="submit"]{
+.Form .SubmitBtn{
     width: 100%;
     background-color: white;
     border: solid 1px white;
@@ -66,12 +71,16 @@
     margin-top: 20px;
     justify-self: flex-end;
 }
-.Form input[type="submit"]:hover,
-.Form input[type="submit"]:focus,
-.Form input[type="submit"]:active
+.SubmitBtn:hover,
+.SubmitBtn:focus,
+.SubmitBtn:active
 {
     opacity: 0.9;
     outline: none;
+}
+.Form  .SubmitBtn:disabled {
+    opacity: 0.7;
+    pointer-events: none;
 }
 /* ********************* End Submit Button Rules ***************************** */
 
@@ -131,3 +140,5 @@
     margin-left: 90px;
     margin-top: -26px;
 }
+
+

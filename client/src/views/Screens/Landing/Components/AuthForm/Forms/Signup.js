@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,6 +15,7 @@ const initialState = {
 
 
 const Signup = () => {
+    const [Loading, setLoading] = useState(false);
     const { handleChange, handleSubmit, values, errors } = SignupForm(submit, initialState);
 
     const authReducer = useSelector(state => state.authReducer);
@@ -32,8 +33,10 @@ const Signup = () => {
 
     const dispatch = useDispatch();
     async function submit(signupData) {
-        console.log(signupData);
+        // console.log(signupData);
+        setLoading(true)
         await dispatch(signupAction(signupData))
+        setLoading(false)
     }
 
 
@@ -84,7 +87,13 @@ const Signup = () => {
                 </div>
 
 
-                <input type='submit' value='Signup' />
+                <button
+                    className={classes.SubmitBtn}
+                    type='submit'
+                    disabled={!(values.password.length > 0 && values.username.length > 0) || Loading}
+                >
+                    {Loading ? <span><i className="fa fa-spinner fa-spin" />&nbsp;&nbsp;Loading</span> : "Sign Up"}
+                </button>
 
             </div>
         </form>

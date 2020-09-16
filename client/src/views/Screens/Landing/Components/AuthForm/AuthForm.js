@@ -27,7 +27,7 @@ const AuthForm = () => {
                         className={classes.ToggleFormBtn}
                         onClick={changeDisplay}
                     >
-                        {Display === 'signup' ? 'Login' : 'Signup'}
+                        {Display === 'signup' ? 'Log In' : 'Sign Up'}
                     </button>
                 </span>
             </div>
