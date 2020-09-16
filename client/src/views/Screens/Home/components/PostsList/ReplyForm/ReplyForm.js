@@ -9,7 +9,7 @@ const PostForm = ({ submitReply, index, id }) => {
     const [Show, setShow] = useState(false);
 
     const submit = () => {
-        submitReply({index, id, replyText:ReplyText});
+        submitReply({ index, id, replyText: ReplyText });
     }
 
 
@@ -27,8 +27,7 @@ const PostForm = ({ submitReply, index, id }) => {
                 Show &&
                 <div className={[classes.PostForm, "vertical-layout"].join(' ')}>
                     <textarea onChange={(event) => setReplyText(event.target.value)} placeholder="Add a reply..." > </textarea>
-                    <span className={classes.SubmitBtn}>Click to
-                    <button onClick={submit}>Submit</button></span>
+                    {ReplyText.length > 0 && <button className={classes.SubmitBtn} onClick={submit}>Send</button>}
                 </div>
             }
 

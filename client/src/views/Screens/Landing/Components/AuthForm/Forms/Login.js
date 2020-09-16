@@ -17,7 +17,8 @@ const Login = (props) => {
     const { handleChange, handleSubmit, values, errors } = LoginForm(submit, initialState);
 
     const authReducer = useSelector(state => state.authReducer);
-    const alertReducer = useSelector(state => state.alertReducer)
+    const alertReducer = useSelector(state => state.alertReducer);
+    
     const { isAuthenticated, isLoading } = authReducer;
     const { id } = alertReducer
 

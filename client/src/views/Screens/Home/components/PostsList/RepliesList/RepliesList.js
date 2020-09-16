@@ -1,6 +1,5 @@
 import React from "react";
 
-import classes from "./RepliesList.module.css";
 import ReplyItem from './ReplyItem/ReplyItem';
 
 
