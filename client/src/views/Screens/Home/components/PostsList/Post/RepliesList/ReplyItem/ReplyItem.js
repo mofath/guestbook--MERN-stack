@@ -1,8 +1,8 @@
 import React from 'react';
 
 import classes from './ReplyItem.module.css';
-import { dynamicFormat } from '../../../../../../../_utils/date_format';
-import Avatar from '../../../../../../UI/Avatar/Avatar';
+import { dynamicFormat } from '../../../../../../../../_utils/date_format';
+import Avatar from '../../../../../../../UI/Avatar/Avatar';
 import AttendingStatus from "../../AttendingStatus/AttendingStatus";
 
 
@@ -13,7 +13,7 @@ const PostItem = ({ reply, authorized }) =>
             <div className={[classes.UserData, "horizontal-layout"].join(" ")}>
                 <div className="vertical-layout">
                     <h5>{reply.writer.username}</h5>
-                    <AttendingStatus status={reply.writer.attendingStatus} type="" />
+                    <AttendingStatus status={reply.writer.attendingStatus} type="dark" />
                 </div>
                 <h6>{dynamicFormat(reply.replyDate)}</h6>
             </div>

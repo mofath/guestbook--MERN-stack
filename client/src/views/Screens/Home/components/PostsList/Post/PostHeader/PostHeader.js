@@ -2,10 +2,10 @@ import React from 'react';
 
 import { FaGlobeAfrica } from 'react-icons/fa';
 
-import Avatar from '../../../../../UI/Avatar/Avatar';
-import AttendingStatus from '../AttendingStatus/AttendingStatus'
+import Avatar from '../../../../../../UI/Avatar/Avatar';
+import AttendingStatus from '../AttendingStatus/AttendingStatus';
 import classes from './PostHeader.module.css';
-import { dynamicFormat } from '../../../../../../_utils/date_format'
+import { dynamicFormat } from '../../../../../../../_utils/date_format'
 
 const PostHeader = ({ username, createdAt, attendingStatus }) => <div className="horizontal-layout">
     <Avatar />

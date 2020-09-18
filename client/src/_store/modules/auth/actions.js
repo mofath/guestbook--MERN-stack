@@ -56,7 +56,7 @@ const signupAction = (signupData) => async (dispatch) => {
   try {
     const { data } = await authService.signup(signupData);
     dispatch(getMessage(data.message.msgBody, false, REGISTER_REQUEST))
-    dispatch({ type: LOGIN_SUCCESS, payload: { userInfo: data.userInfo } });
+    dispatch({ type: REGISTER_SUCCESS, payload: { userInfo: data.userInfo } });
     dispatch(displayMessage("info"))
   }
   catch (error) {

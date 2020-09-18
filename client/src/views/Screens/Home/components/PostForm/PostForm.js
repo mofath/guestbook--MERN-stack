@@ -9,8 +9,6 @@ const PostForm = ({ submit }) => {
     const [PostText, setPostText] = useState("");
     const [Loading, setLoading] = useState(false);
 
-    const empty = () => PostText.length > 0 ? false : true;
-
     const submitPost = async () => {
         setLoading(true);
         await submit(PostText);
