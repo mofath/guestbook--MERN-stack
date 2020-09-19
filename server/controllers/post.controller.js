@@ -96,14 +96,16 @@ const postController = {
                 { new: true }
             )
                 .populate("replies.writer", "username attendingStatus")
-                .select({ "replies": { "$slice": -1 } })
+                .populate("writer", "username")
                 .lean();
 
             DBManager.DISCONNECT();
-            return res.status(201).json({
+            res.status(201).json({
                 message: { msgBody: 'Reply succesfully added', msgError: false },
-                newReply: newAddedReply.replies[0]
+                newReply: newAddedReply.replies[newAddedReply.replies.length -1]
             })
+            req.post = newAddedReply;
+            next();
         }
         catch (err) {
             DBManager.DISCONNECT();
