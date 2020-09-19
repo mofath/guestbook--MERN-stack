@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 
 import { TiWarningOutline as WarnningIcon } from 'react-icons/ti'
-import { IoIosCheckmarkCircleOutline as CheckmarkCIcon } from 'react-icons/io'
+import { IoIosCheckmarkCircleOutline as DoneCIcon } from 'react-icons/io'
 
 import classes from './Message.module.css'
 
-const InfoMsg = ({ msgBody, msgError, close }) => {
+const AutoClearMsg = ({ msgBody, msgError, close }) => {
 
     useEffect(() => {
         let timerId = null;
@@ -14,17 +14,15 @@ const InfoMsg = ({ msgBody, msgError, close }) => {
     }, []);
 
     return (
-        <div className={classes.Msg}>
-            <div className={classes.Title}>
-                <i>{msgError ? <WarnningIcon size="60" color="#f27676" /> : <CheckmarkCIcon size="60" color="#b4e19a" />}</i>
-            </div>
-            <div className={[classes.Body, "vertical-layout"].join(' ')}>
-                <h5>{msgError ? "Error!" : "Success"}</h5>
+        <div className={[classes.Msg, msgError ? classes.Warn : classes.Success, "vertical-layout"].join(' ')}>
+            <i className={classes.Icon}>{msgError ? <WarnningIcon size="45" color="white" /> : <DoneCIcon size="45" color="white" />}</i>
+            <div className={[classes.Content, "vertical-layout"].join(' ')}>
+                <h5 className={classes.Title}>{msgError ? "Error!" : "Success"}</h5>
                 <p>{msgBody}</p>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
 
-export default InfoMsg;
+export default AutoClearMsg;

@@ -1,4 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+    //   useEffect, useRef,
+    useState
+} from 'react';
 
 import PostHeader from './PostHeader/PostHeader';
 
@@ -53,7 +56,7 @@ const Post = ({ post, editPost, deletePost, submitReply, userInfo, authorize, in
         <div
             className={classes.Post}
             key={index}
-            // ref={element => postRef = element}
+        // ref={element => postRef = element}
         >
             <PostHeader username={username} createdAt={createdAt} attendingStatus={attendingStatus} />
             <div className={classes.Content}>

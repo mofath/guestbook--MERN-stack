@@ -1,56 +1,110 @@
 
 .Msg {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  height: auto;
+  position: relative;
+  width: 280px;
+  height: 200px;
   border-radius: 5px;
-  background-color: white;
-  align-self: center;
-  justify-self: center;
+  background-image: radial-gradient(circle 40px at -1% 30%, transparent 100px, white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Title  {
-  align-self: center;
-  justify-self: center;
-  padding: 20px 0px 10px 0px;
-}
-
-.Body {
-  align-self: center;
-  justify-self: center;
-  /* color: #0e1316; */
+/* ************** Buttons *************** */
+.Msg .Btns{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: rgb(20, 20, 20);
+  background-color: #c4c6e3;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.Body h5{
-  align-self: center;
-  padding: 3px 0px;
-  margin: 0px 0px;
-}
-
-.Body p{
-  font-size: 15px;
-}
-
-.Btns{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Btns button {
-  background-color: #3085d6;
-  color: white;
+.Msg .Btns button {
+  background-color: #c4c6e3;
+  color: rgb(24, 23, 23);
+  font-weight: 500;
   border: none;
   outline: none;
-  padding: 3px 20px;
-  border-radius: 3px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 500;
+  width: 100%;
+  font-weight: 700;
+  cursor: pointer;
+}
+.Msg .Btns button:nth-child(2) {
+  background-color: #f27676;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 5px;
+  color: white;  
+}
+.Msg .Btns button:hover {
+  filter: brightness(70%);
+  color: rgb(68, 65, 65);
+  -webkit-transition: all 0.3 ease;
+  -moz-transition: all 0.3 ease;
+  -o-transition: all 0.3 ease;
+  -ms-transition: all 0.3 ease;
+  transition: all 0.3 ease;
 }
 
-.Btns button:nth-child(2) {
-  background-color: red;
-  margin-left: 10px;
+/* **************** Content ***************** */
+.Msg .Content  {
+  width: 90%;
+  margin-left: 8%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
+.Msg .Title  {
+  font-size: 28px;
+  padding: 45px 0px 20px 0px;
+  z-index: 500;
+}
+.Msg p{
+  font-size: 17px;
+}
+.Warn .Content{
+  color: #ff3c5f;
+}
+.Success .Content{
+  color: #00c37d;
+}
+
+.Confirm .Content{
+  color: #381c44;
+}
+
+
+/* ************** Icons ************* */
+.Msg .Icon{
+  position: absolute;
+  left:-14%;
+  top: 13%;
+  background: #f27676;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 8px;
+  border: 3px solid white;
+}
+.Warn .Icon{
+  background: #f27676;
+}
+.Success .Icon{
+  background: #00c37d;
+}
+
+.Confirm .Icon{
+  background: #8c45ad;
+}
+

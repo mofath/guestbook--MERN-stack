@@ -9,18 +9,16 @@ const authController = {
         console.log('\x1b[33m%s\x1b[0m', "...SIGNUP REQUEST...");
 
         const { username, password, attendingStatus } = req.body;
-        console.log(req.body);
 
         try {
             await DBManager.CONNECT();
             const existingUsername = await UserModel.findOne({ username }).lean();
             if (existingUsername) {
                 DBManager.DISCONNECT();
-                return res.status(403).json({ message: { msgBody: 'Username is already taken, Try another one', msgError: true } })
+                return res.status(403).json({ message: { msgBody: 'Username is already taken', msgError: true } })
             } else {
                 const newUser = new UserModel({ username: username.toLowerCase(), password: req.body.password, attendingStatus :attendingStatus })
                 const savedUser = await newUser.save();
-                console.log(savedUser);
                 DBManager.DISCONNECT();
                 const { password, ...rest } = savedUser._doc;
                 const token = jwtToken.createToken({ userId: savedUser._id, username: savedUser.username, role: savedUser.role });
@@ -43,11 +41,11 @@ const authController = {
     login: async (req, res, next) => {
         console.log('\x1b[33m%s\x1b[0m', "...LOGIN REQUEST...");
 
-        const { email, password } = req.body;
+        const { username, password } = req.body;
 
         try {
             await DBManager.CONNECT();
-            const user = await UserModel.findOne({ email });
+            const user = await UserModel.findOne({ username });
             if (user) {
                 DBManager.DISCONNECT();
                 if (comparePassword(password, user.password)) {
@@ -69,7 +67,7 @@ const authController = {
             } else {
                 DBManager.DISCONNECT();
                 return res.status(401).json({
-                    message: { msgBody: 'Invalid email', msgError: true },
+                    message: { msgBody: 'Invalid Username', msgError: true },
                     isAuthenticated: false,
                 })
             }
