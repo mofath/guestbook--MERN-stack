@@ -9,6 +9,7 @@ const postController = {
         try {
             DBManager.CONNECT();
             const posts = await PostModel.find({})
+                .sort({ 'createdAt': -1 })
                 .populate('writer', 'username attendingStatus')
                 .populate('replies.writer', 'username attendingStatus')
                 .lean();
