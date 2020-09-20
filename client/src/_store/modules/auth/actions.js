@@ -42,7 +42,7 @@ const loginAction = (loginData) => async (dispatch) => {
   try {
     const { data } = await authService.login(loginData);
     dispatch(getMessage(data.message.msgBody, false, LOGIN_REQUEST))
-    dispatch({ type: LOGIN_SUCCESS, payload: { userInfo: data.userInfo } });
+    dispatch({ type: LOGIN_SUCCESS, payload: { userInfo: data.userInfo, notifications: data.notifications } });
   }
   catch (error) {
     msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message

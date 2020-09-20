@@ -16,8 +16,7 @@ import Footer from './components/Footer/Footer';
 import Spinner from '../../UI/Spinner/Spinner';
 import classes from './Home.module.css';
 import bg2 from '../../../assets/imgs/bg2.jpg';
-
-
+import Badge from '../../UI/Badge/Badge'
 
 const Home = () => {
     const [Loading, setLoading] = useState(false);
@@ -26,7 +25,7 @@ const Home = () => {
     const postReducer = useSelector(state => state.postReducer);
     const authReducer = useSelector(state => state.authReducer);
     const { posts } = postReducer;
-    const { isAuthenticated, userInfo } = authReducer;
+    const { isAuthenticated, userInfo, notifications } = authReducer;
 
     const dispatch = useDispatch();
 
@@ -69,9 +68,9 @@ const Home = () => {
         <div className={[classes.Home, "vertical-layout"].join(' ')}>
             <section className={classes.HeaderWrapper} >
                 <div className={classes.NotifyIcon}>
-
-                    <FaGlobeAfrica size="40px" color="#96968e" />
-
+                    <Badge badgeContent={notifications? notifications.length : 0}  >
+                        <FaGlobeAfrica size="40px" color="#96968e" />
+                    </Badge>
                 </div>
                 <img src={bg2} alt="" />
                 <div className={classes.PostFormWrapper}>

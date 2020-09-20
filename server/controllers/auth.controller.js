@@ -19,7 +19,6 @@ const authController = {
             } else {
                 const newUser = new UserModel({ username: username.toLowerCase(), password: req.body.password, attendingStatus: attendingStatus })
                 const savedUser = await newUser.save();
-                DBManager.DISCONNECT();
                 const { password, ...rest } = savedUser._doc;
                 const token = jwtToken.createToken({ userId: savedUser._id, username: savedUser.username, role: savedUser.role });
                 res.cookie('access_token', token, { httpOnly: true, sameSite: true });
@@ -47,13 +46,12 @@ const authController = {
             await DBManager.CONNECT();
             const user = await UserModel.findOne({ username });
             if (user) {
-                DBManager.DISCONNECT();
                 if (comparePassword(password, user.password)) {
                     const { password, ...rest } = user._doc
                     const token = jwtToken.createToken({ userId: user._id, username: user.username, role: user.role });
-
                     res.cookie('access_token', token, { httpOnly: true, sameSite: true });
-                    req.userInfo = rest;
+                    req.userInfo = {id: user._id};
+                    console.log(0);
                     next();
                 } else {
                     DBManager.DISCONNECT();

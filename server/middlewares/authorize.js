@@ -1,5 +1,6 @@
 
 const { jwtToken, comparePassword } = require('../utils/helpers');
+const DBManager = require('../utils/DBManager');
 
 const authorize = {
     requireAuth: async (req, res, next) => {
@@ -15,6 +16,7 @@ const authorize = {
                 decodedToken = await jwtToken.verifyToken(token);
                 const { sub: id, username, role } = decodedToken;
                 req.userInfo = {id, username, role}
+                DBManager.CONNECT();
                 next();
             } catch (error) {
                 return res.status(404).json({ message: { msgBody: 'Token expired or not valid', msgError: true } });

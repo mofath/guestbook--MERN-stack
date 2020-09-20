@@ -37,13 +37,17 @@ const notificationController = {
         console.log('\x1b[33m%s\x1b[0m', "...GET USER NOTIFICATION...");
 
         try {
-            DBManager.CONNECT();
+            console.log(1);
+            // DBManager.CONNECT();
+            console.log(2);
             const UserNotification = await NotificationModel.find({ receipient: req.userInfo.id })
                 .populate("sender.username", "username")
                 .limit(10)
                 .lean();
 
+            console.log(3);
             console.log(UserNotification);
+            console.log(4);
             return res.status(200).json({
                 message: { msgBody: 'Authenticated', msgError: false },
                 userInfo: req.userInfo,
