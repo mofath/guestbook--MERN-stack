@@ -13,17 +13,14 @@ const authorize = {
         else {
             try {
                 decodedToken = await jwtToken.verifyToken(token);
+                const { sub: id, username, role } = decodedToken;
+                req.userInfo = {id, username, role}
+                next();
             } catch (error) {
                 return res.status(404).json({ message: { msgBody: 'Token expired or not valid', msgError: true } });
             }
         }
-        if (decodedToken) {
-            req.userInfo = { id: decodedToken.sub, username: decodedToken.username, role: decodedToken.role }
-            next();
-        }
-        else return res.status(401).json({ message: { msgBody: 'Invalid token', msgError: true } });
     },
-
 
 
 
@@ -33,8 +30,6 @@ const authorize = {
         if (req.userInfo.role === 'admin') next();
         return res.status(401).json({ message: { msgBody: 'Not authorized', msgError: true } });
     },
-
-
 
 
 

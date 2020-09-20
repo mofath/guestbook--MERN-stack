@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { FaGlobeAfrica } from 'react-icons/fa';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getMessage, displayMessage } from '../../../_store/modules/alert/actions';
@@ -15,6 +16,8 @@ import Footer from './components/Footer/Footer';
 import Spinner from '../../UI/Spinner/Spinner';
 import classes from './Home.module.css';
 import bg2 from '../../../assets/imgs/bg2.jpg';
+
+
 
 const Home = () => {
     const [Loading, setLoading] = useState(false);
@@ -65,6 +68,11 @@ const Home = () => {
     return (
         <div className={[classes.Home, "vertical-layout"].join(' ')}>
             <section className={classes.HeaderWrapper} >
+                <div className={classes.NotifyIcon}>
+
+                    <FaGlobeAfrica size="40px" color="#96968e" />
+
+                </div>
                 <img src={bg2} alt="" />
                 <div className={classes.PostFormWrapper}>
                     <PostForm submit={submitPost} />

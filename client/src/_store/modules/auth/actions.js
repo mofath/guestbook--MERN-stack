@@ -31,6 +31,7 @@ const authenticate = () => async (dispatch) => {
   }
   catch (error) {
     msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
+    dispatch(getMessage(msgBody, true, AUTH_REQUEST))
     dispatch({ type: AUTH_FAIL });
   }
 }

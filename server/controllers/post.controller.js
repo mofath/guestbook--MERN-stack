@@ -99,7 +99,7 @@ const postController = {
                 .populate("writer", "username")
                 .lean();
 
-            DBManager.DISCONNECT();
+            // DBManager.DISCONNECT();
             res.status(201).json({
                 message: { msgBody: 'Reply succesfully added', msgError: false },
                 newReply: newAddedReply.replies[newAddedReply.replies.length -1]
