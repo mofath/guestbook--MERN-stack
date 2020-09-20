@@ -22,6 +22,7 @@ import {
 
 const INITIAL_STATE = {
   isAuthenticated: false,
+  notifications: [],
   isLoading: null,
   userInfo: {},
 };
@@ -39,9 +40,16 @@ function authReducer(state = INITIAL_STATE, action) {
         isLoading: true,
       };
 
-    case REGISTER_SUCCESS:
     case AUTH_SUCCESS:
     case LOGIN_SUCCESS:
+      return {
+        isLoading: false,
+        isAuthenticated: true,
+        userInfo: action.payload.userInfo,
+        notifications: action.payload.notifications,
+      };
+
+    case REGISTER_SUCCESS:
       return {
         isLoading: false,
         isAuthenticated: true,
@@ -62,6 +70,7 @@ function authReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         userInfo: null,
+        notifications: [],
         isAuthenticated: false,
         isLoading: false,
       }

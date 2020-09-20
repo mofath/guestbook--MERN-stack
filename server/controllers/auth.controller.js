@@ -17,7 +17,7 @@ const authController = {
                 DBManager.DISCONNECT();
                 return res.status(403).json({ message: { msgBody: 'Username is already taken', msgError: true } })
             } else {
-                const newUser = new UserModel({ username: username.toLowerCase(), password: req.body.password, attendingStatus :attendingStatus })
+                const newUser = new UserModel({ username: username.toLowerCase(), password: req.body.password, attendingStatus: attendingStatus })
                 const savedUser = await newUser.save();
                 DBManager.DISCONNECT();
                 const { password, ...rest } = savedUser._doc;
@@ -53,10 +53,8 @@ const authController = {
                     const token = jwtToken.createToken({ userId: user._id, username: user.username, role: user.role });
 
                     res.cookie('access_token', token, { httpOnly: true, sameSite: true });
-                    return res.status(201).json({
-                        message: { msgBody: `Welcome, ${user.username}`, msgError: false },
-                        isAuthenticated: true, userInfo: rest
-                    });
+                    req.userInfo = rest;
+                    next();
                 } else {
                     DBManager.DISCONNECT();
                     return res.status(401).json({

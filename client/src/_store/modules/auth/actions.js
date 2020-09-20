@@ -27,7 +27,7 @@ const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   try {
     const { data } = await authService.authenticate();
-    dispatch({ type: AUTH_SUCCESS, payload: { userInfo: data.userInfo } });
+    dispatch({ type: AUTH_SUCCESS, payload: { userInfo: data.userInfo, notifications: data.notifications } });
   }
   catch (error) {
     msgBody = error.response.data.message ? error.response.data.message.msgBody : error.message
